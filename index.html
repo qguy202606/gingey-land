@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gingey Land</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== Standalone Index ===== */
+    :root {
+      --cookie: #c6865b;
+      --cookie-dark: #a76a42;
+      --cream: #fff8f0;
+      --cream-dark: #fff0db;
+      --pink: #ff9eb5;
+      --pink-dark: #f7a0b8;
+      --green: #7ecba1;
+      --green-dark: #62bf8e;
+      --brown: #5c3d2e;
+      --brown-light: #7a5a48;
+      --white: #ffffff;
+      --shadow: rgba(92, 61, 46, 0.15);
+      --radius: 22px;
+      --font: "Nunito", "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: linear-gradient(180deg, var(--cream) 0%, #ffe9b3 100%);
+      color: var(--brown);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* Stars / Confetti */
+    .bg-decor {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+      background-image:
+        radial-gradient(circle at 15% 20%, var(--pink) 2px, transparent 2px),
+        radial-gradient(circle at 75% 15%, var(--green) 2px, transparent 2px),
+        radial-gradient(circle at 50% 80%, var(--cookie) 3px, transparent 3px),
+        radial-gradient(circle at 20% 60%, var(--green) 2px, transparent 2px),
+        radial-gradient(circle at 85% 70%, var(--pink) 2px, transparent 2px);
+      background-size: 200px 200px, 220px 220px, 180px 180px, 210px 210px, 190px 190px;
+      animation: drift 40s linear infinite;
+    }
+    @keyframes drift {
+      from { background-position: 0 0; }
+      to { background-position: 20px 20px; }
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 92vh;
+      padding: 40px 20px;
+    }
+    .gingey-svg {
+      width: min(340px, 85vw);
+      margin-bottom: 18px;
+      animation: bounce 3s ease-in-out infinite;
+      filter: drop-shadow(0 14px 28px rgba(92, 61, 46, 0.25));
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-18px); }
+      60% { transform: translateY(-8px); }
+    }
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 900;
+      color: var(--cookie-dark);
+      line-height: 1.05;
+      text-shadow: 3px 3px 0 var(--pink);
+      margin-bottom: 8px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--pink-dark);
+      text-shadow: 3px 3px 0 var(--cookie);
+    }
+    .hero .subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: var(--brown-light);
+      margin-bottom: 34px;
+      font-weight: 700;
+    }
+
+    /* Huge entrance cards */
+    .entrance-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+      width: 100%;
+      max-width: 860px;
+      z-index: 1;
+    }
+    .entrance-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px 18px 22px;
+      box-shadow: 0 5px 18px var(--shadow);
+      border: 3.5px solid transparent;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .entrance-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 12px 30px var(--shadow);
+    }
+    .entrance-card.card-about { border-color: var(--pink); }
+    .entrance-card.card-plays { border-color: var(--cookie); }
+    .entrance-card.card-photos { border-color: var(--green); }
+    .entrance-card.card-friends { border-color: var(--cookie-dark); }
+
+    .entrance-card .card-icon {
+      font-size: 2.8rem;
+      line-height: 1;
+    }
+    .entrance-card h3 {
+      font-size: 1.25rem;
+      font-weight: 900;
+      text-align: center;
+    }
+    .entrance-card p {
+      font-size: 0.92rem;
+      color: var(--brown-light);
+      text-align: center;
+      line-height: 1.4;
+    }
+    .arrow {
+      margin-top: 4px;
+      font-size: 1.3rem;
+      color: var(--cookie-dark);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 16px 26px;
+      font-weight: 700;
+      color: var(--brown-light);
+      position: relative;
+      z-index: 1;
+      font-size: 0.85rem;
+    }
+
+    /* Mobile staggered animations */
+    @media (max-width: 600px) {
+      .hero { min-height: 80vh; }
+      .gingey-svg { width: 240px; margin-bottom: 10px; }
+      .entrance-cards { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .entrance-card { padding: 18px 10px 14px; }
+      .entrance-card .card-icon { font-size: 2rem; }
+      .entrance-card h3 { font-size: 1rem; }
+    }
+    @media (max-width: 380px) {
+      .entrance-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-decor"></div>
+
+  <section class="hero">
+    <!-- SVG Gingey -->
+    <svg class="gingey-svg" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg" aria-label="Gingey the Gingerbread Friend">
+      <circle cx="150" cy="160" r="115" fill="#c6865b" />
+      <circle cx="150" cy="160" r="108" fill="none" stroke="#a76a42" stroke-width="3" opacity="0.35"/>
+      <!-- Blush -->
+      <ellipse cx="100" cy="165" rx="14" ry="10" fill="#ff9eb5" opacity="0.7"/>
+      <ellipse cx="200" cy="165" rx="14" ry="10" fill="#ff9eb5" opacity="0.7"/>
+      <!-- Eyes -->
+      <circle cx="115" cy="145" r="9" fill="#2c1a0e"/>
+      <circle cx="185" cy="145" r="9" fill="#2c1a0e"/>
+      <circle cx="118" cy="142" r="3" fill="#ffffff" opacity="0.7"/>
+      <circle cx="188" cy="142" r="3" fill="#ffffff" opacity="0.7"/>
+      <!-- Nose -->
+      <circle cx="150" cy="170" r="14" fill="#e8413c"/>
+      <circle cx="147" cy="166" r="4" fill="#ff9a96" opacity="0.7"/>
+      <!-- Smile -->
+      <path d="M 118 194 Q 150 224 182 194" fill="none" stroke="#2c1a0e" stroke-width="5" stroke-linecap="round"/>
+      <!-- Scarf -->
+      <ellipse cx="150" cy="270" rx="85" ry="20" fill="#ff9eb5"/>
+      <rect x="120" y="262" width="22" height="42" rx="10" fill="#ff9eb5"/>
+      <rect x="158" y="262" width="22" height="42" rx="10" fill="#ff9eb5"/>
+      <!-- Buttons -->
+      <circle cx="150" cy="230" r="9" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+      <circle cx="150" cy="255" r="9" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+      <circle cx="150" cy="205" r="9" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+    </svg>
+
+    <h1>Gingey <em>Land</em></h1>
+    <p class="subtitle">A cozy cookie world made for little dreamers ✨</p>
+
+    <div class="entrance-cards">
+      <a href="about.html" class="entrance-card card-about">
+        <span class="card-icon">📖</span>
+        <h3>About Gingey</h3>
+        <p>Meet the friend made of cookie dough &amp; kindness.</p>
+        <span class="arrow">→</span>
+      </a>
+
+      <a href="adventures.html" class="entrance-card card-plays">
+        <span class="card-icon">🎮</span>
+        <h3>Plays</h3>
+        <p>Color, match, and play games with Gingey.</p>
+        <span class="arrow">→</span>
+      </a>
+
+      <a href="photos.html" class="entrance-card card-photos">
+        <span class="card-icon">🌈</span>
+        <h3>Photos</h3>
+        <p>Cute snaps from Gingey's little journeys.</p>
+        <span class="arrow">→</span>
+      </a>
+
+      <a href="friends.html" class="entrance-card card-friends">
+        <span class="card-icon">🤗</span>
+        <h3>Friends</h3>
+        <p>Meet the buddies who love adventures too.</p>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>Made with 💚 for Earth 🌍</footer>
+</body>
+</html>
