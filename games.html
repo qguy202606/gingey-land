@@ -6,7 +6,6 @@
   <title>Games — Gingey Land</title>
   <link rel="stylesheet" href="css/_site.css?v=5" />
   <style>
-    /* Fallback for CSS file loading issues */
     body {
       font-family: "Nunito", "Segoe UI", "Microsoft YaHei", sans-serif;
       background: #fff8f0;
@@ -15,19 +14,78 @@
       text-align: center;
       margin: 0;
     }
-    .page-hero {
-      width: 120px !important;
-      height: auto !important;
-      max-width: 120px !important;
-      display: block !important;
-      margin: 0 auto 10px !important;
-    }
     svg.logo-icon {
       width: 28px !important;
       height: 28px !important;
       max-width: 28px !important;
       display: inline-block !important;
       vertical-align: middle;
+    }
+    .page-hero {
+      width: 120px !important;
+      max-width: 120px !important;
+      display: block !important;
+      margin: 0 auto 10px !important;
+    }
+    .game-card {
+      background: #fff;
+      border-radius: 22px;
+      padding: 18px 14px;
+      box-shadow: 0 3px 14px rgba(92,61,46,0.15);
+      text-align: center;
+      width: 100%;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+    .mini-btn {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 2.5px solid #ffd7b8;
+      background: #fff8f0;
+      cursor: pointer;
+      font-weight: 800;
+      color: #5c3d2e;
+      margin: 4px;
+    }
+    .mini-btn:hover {
+      background: #ff9eb5;
+      color: #fff;
+      border-color: #c6865b;
+    }
+    .cookie {
+      display: inline-grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      max-width: 220px;
+      margin: 10px auto;
+    }
+    .cookie span {
+      width: 56px;
+      height: 56px;
+      line-height: 56px;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 3px 0 #ffd7b8;
+      border: 2.5px solid #ffe0c0;
+      cursor: pointer;
+      font-weight: 900;
+      font-size: 1.3rem;
+      user-select: none;
+    }
+    .cookie span.popped {
+      background: #7ecba1;
+      color: #fff;
+      border-color: #5ba882;
+      pointer-events: none;
+    }
+    .dress .slot { min-height: 220px; }
+    .dress svg { display: block; margin: 0 auto; }
+    .smile svg { display: block; margin: 0 auto; max-width: 220px; }
+    .mini-score {
+      font-weight: 900;
+      color: #c6865b;
+      min-height: 1.4em;
+      margin-top: 6px;
     }
   </style>
 </head>
@@ -60,42 +118,83 @@
 </header>
 
 <main>
-  <svg class="page-hero" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg" aria-label="Gingey">
-    <circle cx="150" cy="160" r="110" fill="#c6865b"/>
-    <ellipse cx="100" cy="165" rx="14" ry="10" fill="#ff9eb5" opacity="0.7"/>
-    <ellipse cx="200" cy="165" rx="14" ry="10" fill="#ff9eb5" opacity="0.7"/>
-    <circle cx="115" cy="142" r="9" fill="#2c1a0e"/>
-    <circle cx="185" cy="142" r="9" fill="#2c1a0e"/>
-    <circle cx="150" cy="170" r="14" fill="#e8413c"/>
-    <path d="M 118 194 Q 150 224 182 194" fill="none" stroke="#2c1a0e" stroke-width="5" stroke-linecap="round"/>
-    <ellipse cx="150" cy="270" rx="85" ry="20" fill="#ff9eb5"/>
-    <circle cx="150" cy="230" r="9" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
-    <circle cx="150" cy="255" r="9" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
-  </svg>
-
   <h1 class="page-title">Games</h1>
-  <p class="page-subtitle">Play, learn, and imagine with Gingey.</p>
+  <p class="page-subtitle">Tap, dress, and play with Gingey.</p>
 
-  <div class="grid-3">
-    <div class="card">
-      <h3 style="margin:4px 0 6px;">Cookie Puzzle</h3>
-      <p style="margin-bottom:10px;">Put the gingerbread pieces back together.</p>
-      <div id="game-puzzle"></div>
-      <p class="game-message" style="margin-top:8px;font-weight:800;color:#c6865b;min-height:1.2em;"></p>
+  <div style="display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));justify-items:center;max-width:1100px;margin:0 auto;">
+
+    <!-- 1 Cookie Pop -->
+    <div class="game-card" id="game-cookie">
+      <h3 style="margin:4px 0 6px;">Cookie Pop</h3>
+      <p style="margin-bottom:10px;">Pop the cookies to collect yums.</p>
+      <div class="mini-score" id="cookie-score">Score: 0</div>
+      <div class="cookie" id="cookie-board">
+        <span>1</span><span>2</span><span>3</span>
+        <span>4</span><span>5</span><span>6</span>
+      </div>
     </div>
 
-    <div class="card">
-      <h3 style="margin:4px 0 6px;">Memory Match</h3>
-      <p style="margin-bottom:10px;">Flip cards and find matching friends.</p>
-      <div id="game-match"></div>
-      <p class="game-message" style="margin-top:8px;font-weight:800;color:#c6865b;min-height:1.2em;"></p>
+    <!-- 2 Dress Up -->
+    <div class="game-card dress" id="game-dress">
+      <h3 style="margin:4px 0 6px;">Gingey Dress Up</h3>
+      <p style="margin-bottom:10px;">Tap an accessory to wear it.</p>
+      <div style="margin-bottom:8px;">
+        <button class="mini-btn" data-add="bow">🎀 Bow</button>
+        <button class="mini-btn" data-add="hat">🧢 Hat</button>
+        <button class="mini-btn" data-add="scarf">🧣 Scarf</button>
+      </div>
+      <svg viewBox="0 0 260 300" xmlns="http://www.w3.org/2000/svg" id="gingey-dress">
+        <circle cx="130" cy="120" r="70" fill="#c6865b"/>
+        <circle cx="108" cy="110" r="7" fill="#2c1a0e"/>
+        <circle cx="152" cy="110" r="7" fill="#2c1a0e"/>
+        <circle cx="130" cy="124" r="9" fill="#e8413c"/>
+        <path d="M114 136 Q130 158 146 136" stroke="#2c1a0e" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M104 144 Q130 168 156 144" fill="#ff9eb5"/>
+        <path id="dress-body" d="M102 164 Q130 150 158 164 L170 230 Q130 244 90 230 Z" fill="#c6865b"/>
+        <path d="M110 164 Q130 176 150 164" fill="none" stroke="#ff9eb5" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="130" cy="188" r="6" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+        <circle cx="130" cy="208" r="6" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+        <!-- accessories start hidden -->
+        <g id="acc-bow" style="display:none;">
+          <path d="M100 102 Q130 86 160 102 Q130 116 100 102 Z" fill="#ff9eb5"/>
+          <circle cx="130" cy="102" r="5" fill="#ffd54f"/>
+        </g>
+        <g id="acc-hat" style="display:none;">
+          <path d="M80 100 L130 56 L180 100 Z" fill="#ff7043"/>
+          <rect x="82" y="98" width="96" height="10" fill="#ff7043" rx="3"/>
+          <path d="M78 110 Q130 92 182 110" fill="#ffab91"/>
+        </g>
+        <g id="acc-scarf" style="display:none;">
+          <path d="M108 152 Q130 176 152 152 L158 198 Q130 214 102 198 Z" fill="#7ecba1"/>
+        </g>
+        <path d="M100 230 Q96 260 94 290" stroke="#c6865b" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M160 230 Q164 260 166 290" stroke="#c6865b" stroke-width="10" fill="none" stroke-linecap="round"/>
+      </svg>
     </div>
 
-    <div class="card">
-      <h3 style="margin:4px 0 6px;">Color Studio</h3>
-      <p style="margin-bottom:10px;">Color Gingey's favorite candy scenes.</p>
-      <div id="game-color"></div>
-      <p class="game-message" style="margin-top:8px;font-weight:800;color:#c6865b;min-height:1.2em;"></p>
+    <!-- 3 Smile Booth -->
+    <div class="game-card smile" id="game-smile">
+      <h3 style="margin:4px 0 6px;">Smile Booth</h3>
+      <p style="margin-bottom:10px;">Pick a mood for Gingey’s face.</p>
+      <div style="margin-bottom:8px;">
+        <button class="mini-btn" data-face="happy">😊</button>
+        <button class="mini-btn" data-face="silly">🤪</button>
+        <button class="mini-btn" data-face="cool">😎</button>
+        <button class="mini-btn" data-face="love">🥰</button>
+      </div>
+      <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg" id="smile-face">
+        <circle cx="130" cy="120" r="70" fill="#c6865b"/>
+        <circle id="smile-eye-l" cx="106" cy="108" r="7" fill="#2c1a0e"/>
+        <circle id="smile-eye-r" cx="154" cy="108" r="7" fill="#2c1a0e"/>
+        <path id="smile-mouth" d="M114 134 Q130 156 146 134" stroke="#2c1a0e" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M104 140 Q130 164 156 140" fill="#ff9eb5"/>
+        <path d="M102 160 Q130 144 158 160 L168 222 Q130 236 92 222 Z" fill="#c6865b"/>
+        <path d="M110 160 Q130 172 150 160" fill="none" stroke="#ff9eb5" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="130" cy="186" r="6" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+        <circle cx="130" cy="206" r="6" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+        <path d="M100 225 Q96 252 94 270" stroke="#c6865b" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M160 225 Q164 252 166 270" stroke="#c6865b" stroke-width="10" fill="none" stroke-linecap="round"/>
+      </svg>
     </div>
   </div>
 </main>
@@ -111,7 +210,66 @@
   <div class="footer-tagline">Copyright © 2026 Gingey Land. All rights reserved.</div>
 </footer>
 
-<script src="js/menu.js?v=5"></script>
-<script src="js/games.js?v=3"></script>
+<script>
+(function() {
+  const cookieBoard = document.getElementById('cookie-board');
+  const cookieScore = document.getElementById('cookie-score');
+  let cookieTotal = 0;
+
+  if (cookieBoard && cookieScore) {
+    const values = Array.from({ length: 6 }, () => Math.floor(Math.random() * 3) + 1);
+    const cells = cookieBoard.querySelectorAll('span');
+    cells.forEach((cell, idx) => {
+      cell.textContent = '🍪';
+      cell.dataset.val = values[idx];
+      cell.addEventListener('click', () => {
+        if (cell.classList.contains('popped')) return;
+        cookieTotal += values[idx];
+        cell.classList.add('popped');
+        cookieScore.textContent = 'Score: ' + cookieTotal;
+        if (cookieBoard.querySelectorAll('.popped').length === 6) {
+          cookieScore.textContent = 'Yum! + ' + cookieTotal + ' cookies';
+        }
+      });
+    });
+  }
+
+  const dressBox = document.getElementById('game-dress');
+  if (dressBox) {
+    dressBox.addEventListener('click', (e) => {
+      const btn = e.target.closest('.mini-btn');
+      if (!btn) return;
+      const type = btn.getAttribute('data-add');
+      const acc = document.getElementById('acc-' + type);
+      if (!acc) return;
+      const visible = acc.style.display !== 'none';
+      acc.style.display = visible ? 'none' : 'block';
+    });
+  }
+
+  const faces = {
+    happy: { mouth: 'M114 134 Q130 156 146 134', eye: '#2c1a0e' },
+    silly: { mouth: 'M110 132 Q130 162 150 132', eye: '#ff7043' },
+    cool: { mouth: 'M118 138 Q130 150 142 138', eye: '#1a237e' },
+    love: { mouth: 'M114 136 Q130 158 146 136', eye: '#e8413c' },
+  };
+
+  const smileBox = document.getElementById('game-smile');
+  if (smileBox) {
+    smileBox.addEventListener('click', (e) => {
+      const btn = e.target.closest('.mini-btn');
+      if (!btn) return;
+      const f = faces[btn.getAttribute('data-face')];
+      if (!f) return;
+      const mouth = document.getElementById('smile-mouth');
+      const l = document.getElementById('smile-eye-l');
+      const r = document.getElementById('smile-eye-r');
+      if (mouth) mouth.setAttribute('d', f.mouth);
+      if (l) l.setAttribute('fill', f.eye);
+      if (r) r.setAttribute('fill', f.eye);
+    });
+  }
+})();
+</script>
 </body>
 </html>
