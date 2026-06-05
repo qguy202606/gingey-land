@@ -8,16 +8,101 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet" />
   <style>
-    .logo-icon { width: 28px !important; height: 28px !important; max-width: 28px !important; }
-    .page-hero { width: 48px !important; height: auto !important; max-width: 48px !important; display: block; margin: 0 auto 6px; }
-    svg.logo-icon, svg.page-hero { width: 48px !important; height: auto !important; max-width: 48px !important; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Nunito", "Segoe UI", sans-serif;
+      background: #fff8f0; color: #5c3d2e;
+      min-height: 100vh;
+    }
+    main {
+      max-width: 960px;
+      margin: 28px auto;
+      padding: 0 18px;
+      text-align: center;
+    }
+    .page-title {
+      font-size: 2.2rem;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 8px;
+      color: #a76a42;
+    }
+    .page-subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #7a5a48;
+      margin-bottom: 28px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+    .card {
+      background: #fff;
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 3px 14px rgba(92,61,46,0.15);
+      text-align: center;
+      width: 100%;
+      max-width: 300px;
+    }
+    svg.logo-icon {
+      width: 28px !important;
+      height: 28px !important;
+      max-width: 28px !important;
+      display: inline-block !important;
+      vertical-align: middle;
+    }
+    svg.page-hero {
+      width: 48px !important;
+      height: auto !important;
+      max-width: 48px !important;
+      display: block !important;
+      margin: 0 auto !important;
+    }
+    header {
+      text-align: center;
+    }
+    .logo-row a {
+      display: inline-flex !important;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      justify-content: center;
+    }
+    .menu-row {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      padding: 6px 12px 10px;
+      flex-wrap: wrap;
+    }
+    .menu-btn {
+      display: inline-block;
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 700;
+      background: #fff0db;
+      color: #5c3d2e;
+      border: 2.5px solid transparent;
+      text-decoration: none;
+    }
+    .site-footer {
+      text-align: center;
+      padding: 20px 16px 24px;
+      font-size: 0.9rem;
+      color: #7a5a48;
+    }
   </style>
 </head>
 <body>
-<header class="site-header">
+<header>
   <div class="logo-row">
-    <a href="../index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
-      <svg class="logo-icon" style="width:28px!important;height:28px!important;max-width:28px!important;display:block;">
+    <a href="../index.html">
+      <svg class="logo-icon" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg" aria-label="Gingey">
         <circle cx="150" cy="160" r="110" fill="#c6865b"/>
         <ellipse cx="100" cy="165" rx="14" ry="10" fill="#ff9eb5" opacity="0.7"/>
         <ellipse cx="200" cy="165" rx="14" ry="10" fill="#ff9eb5" opacity="0.7"/>
@@ -29,65 +114,72 @@
         <circle cx="150" cy="230" r="9" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
         <circle cx="150" cy="255" r="9" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
       </svg>
-      <span class="logo-text">Gingey <span>Land</span></span>
+      <span style="font-size:1.9rem;font-weight:900;color:#a76a42;letter-spacing:-0.5px;text-shadow:1px 1px 0 #f7a0b8;">
+        Gingey <span style="color:#f7a0b8;">Land</span>
+      </span>
     </a>
   </div>
   <nav class="menu-row">
-    <a href="about.html" class="menu-btn" data-page="about.html">📖 About</a>
-    <a href="adventures.html" class="menu-btn" data-page="adventures.html">🎮 Plays &amp; Adventures</a>
-    <a href="photos.html" class="menu-btn" data-page="photos.html">🌈 Photos</a>
-    <a href="friends.html" class="menu-btn" data-page="friends.html">🤗 Friends</a>
+    <a href="about.html" class="menu-btn">📖 About</a>
+    <a href="adventures.html" class="menu-btn">🎮 Plays &amp; Adventures</a>
+    <a href="photos.html" class="menu-btn">🌈 Photos</a>
+    <a href="friends.html" class="menu-btn">🤗 Friends</a>
   </nav>
 </header>
 
 <main>
+  <div style="margin-bottom: 6px;">
+    <svg class="page-hero" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg" aria-label="Gingey">
+      <circle cx="150" cy="160" r="110" fill="#c6865b"/>
+      <ellipse cx="100" cy="165" rx="14" ry="10" fill="#ff9eb5" opacity="0.7"/>
+      <ellipse cx="200" cy="165" rx="14" ry="10" fill="#ff9eb5" opacity="0.7"/>
+      <circle cx="115" cy="142" r="9" fill="#2c1a0e"/>
+      <circle cx="185" cy="142" r="9" fill="#2c1a0e"/>
+      <circle cx="150" cy="170" r="14" fill="#e8413c"/>
+      <path d="M 118 194 Q 150 224 182 194" fill="none" stroke="#2c1a0e" stroke-width="5" stroke-linecap="round"/>
+      <ellipse cx="150" cy="270" rx="85" ry="20" fill="#ff9eb5"/>
+      <circle cx="150" cy="230" r="9" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+      <circle cx="150" cy="255" r="9" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+    </svg>
+  </div>
+
   <h1 class="page-title">Hello, it’s Gingey!</h1>
   <p class="page-subtitle">Baked with love, sugar, and curiosity.</p>
 
   <div class="grid-3">
-    <div class="card" style="grid-column: 1 / -1; text-align:center;">
-      <svg class="page-hero" style="width:48px!important;height:auto!important;max-width:48px!important;display:block;margin:0 auto 6px;">
-        <circle cx="150" cy="160" r="110" fill="#c6865b"/>
-        <ellipse cx="100" cy="165" rx="14" ry="10" fill="#ff9eb5" opacity="0.7"/>
-        <ellipse cx="200" cy="165" rx="14" ry="10" fill="#ff9eb5" opacity="0.7"/>
-        <circle cx="115" cy="142" r="9" fill="#2c1a0e"/>
-        <circle cx="185" cy="142" r="9" fill="#2c1a0e"/>
-        <circle cx="150" cy="170" r="14" fill="#e8413c"/>
-        <path d="M 118 194 Q 150 224 182 194" fill="none" stroke="#2c1a0e" stroke-width="5" stroke-linecap="round"/>
-        <ellipse cx="150" cy="270" rx="85" ry="20" fill="#ff9eb5"/>
-        <circle cx="150" cy="230" r="9" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
-        <circle cx="150" cy="255" r="9" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
-      </svg>
-      <h2 style="font-size:1.5rem;margin-bottom:8px;">🍪 My Cookie Name</h2>
-      <p style="font-size:1.05rem;line-height:1.7;max-width:520px;margin:0 auto;">
+    <div class="card">
+      <span style="font-size:2rem;">🍪</span>
+      <h3 style="margin:6px 0 4px;font-size:1.3rem;">My Cookie Name</h3>
+      <p>
         Hiya! I’m <strong>Gingey</strong>. I was born in a cozy kitchen where the oven smelled like cinnamon and happiness. I have a pink scarf to keep me warm, three little green buttons, and one very important job — <strong>to help little ones feel brave, creative, and kind</strong>.
       </p>
     </div>
-
     <div class="card">
       <span style="font-size:2rem;">🌲</span>
-      <h3 style="margin:6px 0 4px;">Outdoor Explorer</h3>
+      <h3 style="margin:6px 0 4px;font-size:1.3rem;">Outdoor Explorer</h3>
       <p>Gingey loves hikes, wildflowers, and wide open skies.</p>
     </div>
     <div class="card">
       <span style="font-size:2rem;">🎨</span>
-      <h3 style="margin:6px 0 4px;">Mini Artist</h3>
+      <h3 style="margin:6px 0 4px;font-size:1.3rem;">Mini Artist</h3>
       <p>Colors, scribbles, stickers — every day is a new canvas.</p>
     </div>
     <div class="card">
       <span style="font-size:2rem;">🍭</span>
-      <h3 style="margin:6px 0 4px;">Snack Buddy</h3>
+      <h3 style="margin:6px 0 4px;font-size:1.3rem;">Snack Buddy</h3>
       <p>Gingey believes cookies taste better when shared with friends.</p>
     </div>
   </div>
 
-  <div style="margin-top:28px;">
-    <a href="adventures.html" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Start an Adventure →</a>
+  <div style="margin-top:28px;max-width:400px;margin-left:auto;margin-right:auto;">
+    <a href="adventures.html" style="display:inline-block;padding:14px 32px;border-radius:999px;font-size:1.15rem;font-weight:800;background:#c6865b;color:#fff;text-decoration:none;box-shadow:0 4px 0 #a76a42;">
+      Start an Adventure →
+    </a>
   </div>
 </main>
 
-<footer class="site-footer">
-  <div class="footer-tagline"></div>
+<footer>
+  <div style="text-align:center;padding:20px 16px 24px;font-size:0.9rem;color:#7a5a48;"></div>
 </footer>
 
 <script src="../js/menu.js?v=4"></script>
