@@ -103,7 +103,7 @@ function initMemoryMatch() {
 
     const back = document.createElement('div');
     back.className = 'match-back';
-    back.style.cssText = 'position:absolute;inset:0;border-radius:14px;background:#c6865b;box-shadow:0 3px 0 #a76a42;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:#fff;backface-visidden:hidden;transform:rotateY(180deg);';
+    back.style.cssText = 'position:absolute;inset:0;border-radius:14px;background:#c6865b;box-shadow:0 3px 0 #a76a42;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:#fff;backface-visibility:hidden;transform:rotateY(180deg);';
 
     inner.appendChild(front);
     inner.appendChild(back);
