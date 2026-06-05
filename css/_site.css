@@ -139,6 +139,7 @@ main {
   box-shadow: 0 3px 14px var(--shadow);
   border: 2.5px solid transparent;
   transition: all 0.25s ease;
+  overflow: hidden;
 }
 .card:hover {
   transform: translateY(-4px);
@@ -148,6 +149,13 @@ main {
 .card svg {
   max-width: 60px;
   height: auto;
+}
+.page-hero {
+  width: 60px !important;
+  height: auto !important;
+  max-width: 60px !important;
+  display: block;
+  margin: 0 auto 6px;
 }
 
 /* ===== Huge Button ===== */
