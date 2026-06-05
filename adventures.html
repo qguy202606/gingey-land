@@ -14,13 +14,6 @@
       text-align: center;
       margin: 0;
     }
-    .page-hero {
-      width: 120px !important;
-      height: auto !important;
-      max-width: 120px !important;
-      display: block !important;
-      margin: 0 auto 10px !important;
-    }
     svg.logo-icon {
       width: 28px !important;
       height: 28px !important;
@@ -28,6 +21,35 @@
       display: inline-block !important;
       vertical-align: middle;
     }
+    .page-hero {
+      width: 120px !important;
+      height: auto !important;
+      max-width: 120px !important;
+      display: block !important;
+      margin: 0 auto 10px !important;
+    }
+
+    /* Story */
+    .story { max-width: 860px; margin: 0 auto; }
+    .story-node { display: none; }
+    .story-node.active { display: block; }
+    .story-scene {
+      background: #fff;
+      border-radius: 22px;
+      padding: 22px 18px 18px;
+      box-shadow: 0 3px 14px rgba(92,61,46,0.15);
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    .story-scene svg { display: block; margin: 0 auto 10px; }
+    .story-text {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #5c3d2e;
+      margin-bottom: 14px;
+    }
+    .choices { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .choices .btn { min-width: 180px; }
   </style>
 </head>
 <body>
@@ -60,26 +82,201 @@
 
 <main>
   <h1 class="page-title">Plays &amp; Adventures</h1>
-  <p class="page-subtitle">Tap, draw, and play with Gingey.</p>
+  <p class="page-subtitle">Choose your path and see what Gingey discovers.</p>
 
-  <div class="grid-3">
-    <div class="card">
-      <span style="font-size:3rem;">🍎</span>
-      <h3 style="margin:6px 0 4px;">Color Match</h3>
-      <p style="margin-bottom:10px;">Tap the same color cookies!</p>
-      <a class="btn btn-pink" href="javascript:void(0)" onclick="alert('Game coming soon, little buddy!')">Play Now</a>
+  <div class="story" id="story-root">
+    <!-- 1 -->
+    <div class="story-node active" data-node="1">
+      <div class="story-scene">
+        <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" style="width:220px;height:auto;">
+          <rect width="400" height="260" fill="#c8e6c9"/>
+          <path d="M40 260 Q70 210 100 260" fill="#66bb6a"/>
+          <path d="M150 260 Q180 190 210 260" fill="#66bb6a"/>
+          <path d="M260 260 Q290 210 320 260" fill="#66bb6a"/>
+          <circle cx="200" cy="100" r="34" fill="#c6865b"/>
+          <circle cx="185" cy="93" r="5" fill="#2c1a0e"/>
+          <circle cx="215" cy="93" r="5" fill="#2c1a0e"/>
+          <circle cx="200" cy="104" r="7" fill="#e8413c"/>
+          <path d="M184 116 Q200 138 216 116" stroke="#2c1a0e" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M176 126 Q200 152 224 126" fill="#ff9eb5"/>
+          <path d="M172 132 Q200 148 228 132 L238 210 Q200 224 162 210 Z" fill="#c6865b"/>
+          <path d="M180 132 Q200 144 220 132" fill="none" stroke="#ff9eb5" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="200" cy="162" r="6" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+          <circle cx="200" cy="186" r="6" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+          <path d="M172 142 Q138 172 118 200" stroke="#c6865b" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <path d="M228 142 Q262 120 282 100" stroke="#c6865b" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <path d="M180 210 Q176 242 174 260" stroke="#c6865b" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <path d="M220 210 Q224 242 226 260" stroke="#c6865b" stroke-width="10" fill="none" stroke-linecap="round"/>
+        </svg>
+        <p class="story-text">Gingey reaches a sunny crossroads in Cookie Forest. To the left, a tiny path leads to a glowing garden. To the right, a wooden bridge stretches across a sparkly stream.</p>
+        <div class="choices">
+          <button class="btn btn-primary" data-goto="2">Take the garden path</button>
+          <button class="btn btn-green" data-goto="3">Cross the sparkly bridge</button>
+        </div>
+      </div>
     </div>
-    <div class="card">
-      <span style="font-size:3rem;">🧩</span>
-      <h3 style="margin:6px 0 4px;">Memory Flip</h3>
-      <p style="margin-bottom:10px;">Find the matching gingerbread pairs.</p>
-      <a class="btn btn-primary" href="javascript:void(0)" onclick="alert('Game coming soon, little buddy!')">Play Now</a>
+
+    <!-- 2 -->
+    <div class="story-node" data-node="2">
+      <div class="story-scene">
+        <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" style="width:220px;height:auto;">
+          <rect width="400" height="260" fill="#fce4ec"/>
+          <circle cx="200" cy="140" r="55" fill="#c6865b"/>
+          <circle cx="184" cy="132" r="6" fill="#2c1a0e"/>
+          <circle cx="216" cy="132" r="6" fill="#2c1a0e"/>
+          <circle cx="200" cy="142" r="8" fill="#e8413c"/>
+          <path d="M184 154 Q200 176 216 154" stroke="#2c1a0e" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M174 164 Q200 190 226 164" fill="#ff9eb5"/>
+          <circle cx="200" cy="174" r="6" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+          <circle cx="200" cy="198" r="6" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+          <path d="M170 170 Q200 155 230 170 L240 222 Q200 236 160 222 Z" fill="#c6865b"/>
+          <path d="M178 170 Q200 182 222 170" fill="none" stroke="#ff9eb5" stroke-width="6" stroke-linecap="round"/>
+          <path d="M180 225 Q150 245 140 260" stroke="#c6865b" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <path d="M220 225 Q250 245 260 260" stroke="#c6865b" stroke-width="10" fill="none" stroke-linecap="round"/>
+        </svg>
+        <p class="story-text">Gingey tiptoes into the Secret Garden and finds a mysterious cookie jar that hums with magic. A friendly firefly offers a choice.</p>
+        <div class="choices">
+          <button class="btn btn-pink" data-goto="4">Open the glowing jar</button>
+          <button class="btn btn-primary" data-goto="5">Ask the firefly for directions</button>
+        </div>
+      </div>
     </div>
-    <div class="card">
-      <span style="font-size:3rem;">🖍️</span>
-      <h3 style="margin:6px 0 4px;">Doodle Pad</h3>
-      <p style="margin-bottom:10px;">Draw Gingey’s new adventure scarf.</p>
-      <a class="btn btn-green" href="javascript:void(0)" onclick="alert('Game coming soon, little buddy!')">Play Now</a>
+
+    <!-- 3 -->
+    <div class="story-node" data-node="3">
+      <div class="story-scene">
+        <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" style="width:220px;height:auto;">
+          <rect width="400" height="260" fill="#e3f2fd"/>
+          <rect x="80" y="170" width="240" height="10" fill="#8d6e63" rx="4"/>
+          <rect x="80" y="170" width="10" height="70" fill="#8d6e63"/>
+          <rect x="310" y="170" width="10" height="70" fill="#8d6e63"/>
+          <circle cx="220" cy="112" r="34" fill="#c6865b"/>
+          <circle cx="205" cy="105" r="5" fill="#2c1a0e"/>
+          <circle cx="235" cy="105" r="5" fill="#2c1a0e"/>
+          <circle cx="220" cy="115" r="7" fill="#e8413c"/>
+          <path d="M204 127 Q220 148 236 127" stroke="#2c1a0e" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M194 137 Q220 162 246 137" fill="#ff9eb5"/>
+          <circle cx="220" cy="148" r="6" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+          <circle cx="220" cy="170" r="6" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+          <path d="M190 144 Q220 130 250 144 L258 200 Q220 214 182 200 Z" fill="#c6865b"/>
+          <path d="M198 144 Q220 156 242 144" fill="none" stroke="#ff9eb5" stroke-width="6" stroke-linecap="round"/>
+          <path d="M190 200 Q176 228 172 260" stroke="#c6865b" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <path d="M250 200 Q264 228 268 260" stroke="#c6865b" stroke-width="10" fill="none" stroke-linecap="round"/>
+        </svg>
+        <p class="story-text">On the bridge, Gingey meets Cocoa Bear, who knows a secret shortcut through Rainbow Tunnel.</p>
+        <div class="choices">
+          <button class="btn btn-green" data-goto="4">Follow Cocoa Bear</button>
+          <button class="btn btn-primary" data-goto="5">Keep exploring alone</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="story-node" data-node="4">
+      <div class="story-scene">
+        <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" style="width:220px;height:auto;">
+          <rect width="400" height="260" fill="#fff9c4"/>
+          <circle cx="200" cy="120" r="46" fill="#c6865b"/>
+          <circle cx="188" cy="112" r="5" fill="#2c1a0e"/>
+          <circle cx="212" cy="112" r="5" fill="#2c1a0e"/>
+          <circle cx="200" cy="122" r="7" fill="#e8413c"/>
+          <path d="M186 134 Q200 154 214 134" stroke="#2c1a0e" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M178 144 Q200 166 222 144" fill="#ff9eb5"/>
+          <circle cx="200" cy="160" r="6" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+          <circle cx="200" cy="182" r="6" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+          <path d="M174 148 Q200 134 226 148 L234 202 Q200 216 166 202 Z" fill="#c6865b"/>
+          <path d="M180 148 Q200 160 220 148" fill="none" stroke="#ff9eb5" stroke-width="6" stroke-linecap="round"/>
+          <path d="M180 202 Q160 228 152 260" stroke="#c6865b" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <path d="M220 202 Q240 228 248 260" stroke="#c6865b" stroke-width="10" fill="none" stroke-linecap="round"/>
+        </svg>
+        <p class="story-text">Gingey discovers the jar holds a tiny Adventure Stamp. With one stamp, the world feels much bigger.</p>
+        <div class="choices">
+          <button class="btn btn-pink" data-goto="end-garden">Keep the stamp and go home</button>
+          <button class="btn btn-green" data-goto="end-share">Share it with a friend</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="story-node" data-node="5">
+      <div class="story-scene">
+        <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" style="width:220px;height:auto;">
+          <rect width="400" height="260" fill="#ffe0b2"/>
+          <circle cx="200" cy="120" r="46" fill="#c6865b"/>
+          <circle cx="188" cy="112" r="5" fill="#2c1a0e"/>
+          <circle cx="212" cy="112" r="5" fill="#2c1a0e"/>
+          <circle cx="200" cy="122" r="7" fill="#e8413c"/>
+          <path d="M186 134 Q200 154 214 134" stroke="#2c1a0e" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M178 144 Q200 166 222 144" fill="#ff9eb5"/>
+          <circle cx="200" cy="160" r="6" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+          <circle cx="200" cy="182" r="6" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+          <path d="M174 148 Q200 134 226 148 L234 202 Q200 216 166 202 Z" fill="#c6865b"/>
+          <path d="M180 148 Q200 160 220 148" fill="none" stroke="#ff9eb5" stroke-width="6" stroke-linecap="round"/>
+          <path d="M180 202 Q160 228 152 260" stroke="#c6865b" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <path d="M220 202 Q240 228 248 260" stroke="#c6865b" stroke-width="10" fill="none" stroke-linecap="round"/>
+        </svg>
+        <p class="story-text">Gingey learns a fun new song from the firefly and follows the sound to a hidden meadow.</p>
+        <div class="choices">
+          <button class="btn btn-primary" data-goto="end-share">Make a new friend</button>
+          <button class="btn btn-green" data-goto="end-garden">Write the song down</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- endings -->
+    <div class="story-node" data-node="end-garden">
+      <div class="story-scene">
+        <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" style="width:220px;height:auto;">
+          <rect width="400" height="260" fill="#fff8f0"/>
+          <circle cx="200" cy="120" r="46" fill="#c6865b"/>
+          <circle cx="188" cy="112" r="5" fill="#2c1a0e"/>
+          <circle cx="212" cy="112" r="5" fill="#2c1a0e"/>
+          <circle cx="200" cy="122" r="7" fill="#e8413c"/>
+          <path d="M186 134 Q200 154 214 134" stroke="#2c1a0e" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M178 144 Q200 166 222 144" fill="#ff9eb5"/>
+          <circle cx="200" cy="160" r="6" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+          <circle cx="200" cy="182" r="6" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+          <path d="M174 148 Q200 134 226 148 L234 202 Q200 216 166 202 Z" fill="#c6865b"/>
+          <path d="M180 148 Q200 160 220 148" fill="none" stroke="#ff9eb5" stroke-width="6" stroke-linecap="round"/>
+          <path d="M180 202 Q160 228 152 260" stroke="#c6865b" stroke-width="10" fill="none" stroke-linecap="round"/>
+          <path d="M220 202 Q240 228 248 260" stroke="#c6865b" stroke-width="10" fill="none" stroke-linecap="round"/>
+        </svg>
+        <p class="story-text">Gingey chooses a quiet evening and keeps the adventure as a sweet memory.</p>
+        <div class="choices">
+          <button class="btn btn-primary" data-goto="1">Play again</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="story-node" data-node="end-share">
+      <div class="story-scene">
+        <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" style="width:220px;height:auto;">
+          <rect width="400" height="260" fill="#e1f5fe"/>
+          <circle cx="160" cy="120" r="34" fill="#c6865b"/>
+          <circle cx="148" cy="112" r="5" fill="#2c1a0e"/>
+          <circle cx="172" cy="112" r="5" fill="#2c1a0e"/>
+          <circle cx="160" cy="122" r="7" fill="#e8413c"/>
+          <path d="M148 134 Q160 154 172 134" stroke="#2c1a0e" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M140 144 Q160 166 180 144" fill="#ff9eb5"/>
+          <circle cx="160" cy="160" r="6" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+          <circle cx="160" cy="182" r="6" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+          <path d="M136 146 Q160 132 184 146 L192 198 Q160 212 128 198 Z" fill="#c6865b"/>
+          <path d="M142 146 Q160 158 178 146" fill="none" stroke="#ff9eb5" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="240" cy="126" r="30" fill="#8d6e63"/>
+          <circle cx="252" cy="118" r="6" fill="#8d6e63"/>
+          <circle cx="228" cy="118" r="6" fill="#8d6e63"/>
+          <circle cx="240" cy="130" r="5" fill="#e8413c"/>
+          <path d="M232 136 Q240 146 248 136" stroke="#2c1a0e" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M226 144 Q240 158 254 144" fill="#ffab91"/>
+          <path d="M232 146 Q240 158 248 146 L252 196 Q240 206 228 196 Z" fill="#8d6e63"/>
+          <circle cx="240" cy="168" r="5" fill="#a1887f"/>
+          <circle cx="240" cy="188" r="5" fill="#a1887f"/>
+        </svg>
+        <p class="story-text">Gingey shares the adventure with a new friend, and the day feels twice as fun.</p>
+        <div class="choices">
+          <button class="btn btn-pink" data-goto="1">Play again</button>
+        </div>
+      </div>
     </div>
   </div>
 </main>
@@ -96,5 +293,21 @@
 </footer>
 
 <script src="/gingey-land/js/menu.js?v=4"></script>
+<script>
+(function() {
+  const root = document.getElementById('story-root');
+  if (!root) return;
+  root.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-goto]');
+    if (!btn) return;
+    const id = btn.getAttribute('data-goto');
+    const target = root.querySelector('.story-node[data-node="' + id + '"]');
+    if (!target) return;
+    root.querySelectorAll('.story-node').forEach((n) => n.classList.remove('active'));
+    target.classList.add('active');
+    window.scrollTo({ top: target.offsetTop - 90, behavior: 'smooth' });
+  });
+})();
+</script>
 </body>
 </html>
