@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{TITLE}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/_site.css?v=4" />
+</head>
+<body>
+<header class="site-header">
+  <div class="logo-row">
+    <a href="../index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+      <svg class="logo-icon" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg" aria-label="Gingey">
+        <circle cx="150" cy="160" r="110" fill="#c6865b"/>
+        <ellipse cx="100" cy="165" rx="14" ry="10" fill="#ff9eb5" opacity="0.7"/>
+        <ellipse cx="200" cy="165" rx="14" ry="10" fill="#ff9eb5" opacity="0.7"/>
+        <circle cx="115" cy="142" r="9" fill="#2c1a0e"/>
+        <circle cx="185" cy="142" r="9" fill="#2c1a0e"/>
+        <circle cx="150" cy="170" r="14" fill="#e8413c"/>
+        <path d="M 118 194 Q 150 224 182 194" fill="none" stroke="#2c1a0e" stroke-width="5" stroke-linecap="round"/>
+        <ellipse cx="150" cy="270" rx="85" ry="20" fill="#ff9eb5"/>
+        <circle cx="150" cy="230" r="9" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+        <circle cx="150" cy="255" r="9" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
+      </svg>
+      <span class="logo-text">Gingey <span>Land</span></span>
+    </a>
+  </div>
+  <nav class="menu-row">
+    <a href="about.html" class="menu-btn" data-page="about.html">📖 About</a>
+    <a href="adventures.html" class="menu-btn" data-page="adventures.html">🎮 Plays &amp; Adventures</a>
+    <a href="photos.html" class="menu-btn" data-page="photos.html">🌈 Photos</a>
+    <a href="friends.html" class="menu-btn" data-page="friends.html">🤗 Friends</a>
+  </nav>
+</header>
+
+<main>
+{{BODY}}
+</main>
+
+<footer class="site-footer">
+  <div class="footer-tagline"></div>
+</footer>
+
+<script src="../js/menu.js?v=4"></script>
+</body>
+</html>
