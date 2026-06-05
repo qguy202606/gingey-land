@@ -145,6 +145,10 @@ main {
   box-shadow: 0 8px 24px var(--shadow);
   border-color: var(--pink);
 }
+.card svg {
+  max-width: 60px;
+  height: auto;
+}
 
 /* ===== Huge Button ===== */
 .btn {
