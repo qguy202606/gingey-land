@@ -7,24 +7,63 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/_site.css?v=3" />
   <style>
-    .logo-icon { width: 28px !important; height: 28px !important; max-width: 28px !important; }
-    .page-hero { width: 48px !important; height: auto !important; max-width: 48px !important; display: block; margin: 0 auto 6px; }
-    svg.logo-icon, svg.page-hero { width: 48px !important; height: auto !important; max-width: 48px !important; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Nunito", "Segoe UI", sans-serif;
+      background: #fff8f0; color: #5c3d2e;
+      min-height: 100vh;
+      text-align: center;
+    }
+    header { text-align: center; }
+    .logo-row a {
+      display: inline-flex !important;
+      align-items: center; gap: 10px; text-decoration: none; justify-content: center;
+    }
+    .menu-row {
+      display: flex; justify-content: center; gap: 6px; padding: 6px 12px 10px; flex-wrap: wrap;
+    }
+    .menu-btn {
+      display: inline-block; padding: 9px 18px; border-radius: 999px; font-size: 1rem; font-weight: 700;
+      background: #fff0db; color: #5c3d2e; border: 2.5px solid transparent; text-decoration: none;
+    }
+    main {
+      max-width: 960px; margin: 28px auto; padding: 0 18px; text-align: center;
+    }
+    svg.logo-icon {
+      width: 28px !important; height: 28px !important; max-width: 28px !important; display: inline-block !important; vertical-align: middle;
+    }
+    svg.page-hero {
+      width: 120px !important; height: auto !important; max-width: 120px !important; display: block !important; margin: 0 auto !important;
+    }
+    .site-footer {
+      text-align: center; padding: 20px 16px 24px; font-size: 0.9rem; color: #7a5a48;
+    }
+    .grid-3 {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; justify-items: center;
+    }
+    .card {
+      background: #fff; border-radius: 22px; padding: 24px;
+      box-shadow: 0 3px 14px rgba(92,61,46,0.15); text-align: center; width: 100%; max-width: 300px;
+    }
+    .photo-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; justify-items: center;
+    }
+    .photo-card {
+      border-radius: 22px; overflow: hidden; background: #fff; box-shadow: 0 2px 10px rgba(92,61,46,0.15);
+      cursor: pointer; width: 100%; max-width: 260px;
+    }
+    .btn {
+      display: inline-block; padding: 14px 32px; border-radius: 999px; font-size: 1.15rem; font-weight: 800;
+      background: #c6865b; color: #fff; text-decoration: none; box-shadow: 0 4px 0 #a76a42;
+    }
   </style>
 </head>
 <body>
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-label="Lightbox">
-    <span class="lightbox-close" aria-label="Close">&times;</span>
-    <img src="" alt="Enlarged photo" />
-  </div>
-
-<header class="site-header">
+<header>
   <div class="logo-row">
-    <a href="../index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
-      <svg class="logo-icon" style="width:28px!important;height:28px!important;max-width:28px!important;display:block;">
+    <a href="../index.html">
+      <svg class="logo-icon" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg" aria-label="Gingey">
         <circle cx="150" cy="160" r="110" fill="#c6865b"/>
         <ellipse cx="100" cy="165" rx="14" ry="10" fill="#ff9eb5" opacity="0.7"/>
         <ellipse cx="200" cy="165" rx="14" ry="10" fill="#ff9eb5" opacity="0.7"/>
@@ -36,16 +75,28 @@
         <circle cx="150" cy="230" r="9" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
         <circle cx="150" cy="255" r="9" fill="#7ecba1" stroke="#5ba882" stroke-width="2"/>
       </svg>
-      <span class="logo-text">Gingey <span>Land</span></span>
+      <span style="font-size:1.9rem;font-weight:900;color:#a76a42;letter-spacing:-0.5px;text-shadow:1px 1px 0 #f7a0b8;">
+        Gingey <span style="color:#f7a0b8;">Land</span>
+      </span>
     </a>
   </div>
   <nav class="menu-row">
-    <a href="about.html" class="menu-btn" data-page="about.html">📖 About</a>
-    <a href="adventures.html" class="menu-btn" data-page="adventures.html">🎮 Plays &amp; Adventures</a>
-    <a href="photos.html" class="menu-btn" data-page="photos.html">🌈 Photos</a>
-    <a href="friends.html" class="menu-btn" data-page="friends.html">🤗 Friends</a>
+    <a href="about.html" class="menu-btn">📖 About</a>
+    <a href="adventures.html" class="menu-btn">🎮 Plays &amp; Adventures</a>
+    <a href="photos.html" class="menu-btn">🌈 Photos</a>
+    <a href="friends.html" class="menu-btn">🤗 Friends</a>
+    <a href="games.html" class="menu-btn">🎲 Games</a>
   </nav>
 </header>
+
+<main>
+<!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Lightbox">
+    <span class="lightbox-close" aria-label="Close">&times;</span>
+    <img src="" alt="Enlarged photo" />
+  </div>
+
+
 
 <main>
   <h1 class="page-title">Photo Gallery</h1>
@@ -94,12 +145,13 @@
     </div>
 
   </div>
+
 </main>
 
-<footer class="site-footer">
-  <div class="footer-tagline"></div>
+<footer>
+  <div class="site-footer"></div>
 </footer>
 
-<script src="../js/menu.js?v=3"></script>
+<script src="../js/menu.js?v=4"></script>
 </body>
 </html>
