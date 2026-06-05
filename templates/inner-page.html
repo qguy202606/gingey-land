@@ -3,16 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{TITLE}}</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet" />
+  <title>{{TITLE}} — Gingey Land</title>
+  <link rel="stylesheet" href="../css/_site.css?v=4" />
+  <style>
+    /* Fallback for CSS file loading issues */
+    body {
+      font-family: "Nunito", "Segoe UI", "Microsoft YaHei", sans-serif;
+      background: #fff8f0;
+      color: #5c3d2e;
+      min-height: 100vh;
+      text-align: center;
+      margin: 0;
+    }
+    .page-hero {
+      width: 120px !important;
+      height: auto !important;
+      max-width: 120px !important;
+      display: block !important;
+      margin: 0 auto 10px !important;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+    .card {
+      background: #fff;
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 3px 14px rgba(92,61,46,0.15);
+      text-align: center;
+      width: 100%;
+      max-width: 300px;
+    }
+    svg.logo-icon {
+      width: 28px !important;
+      height: 28px !important;
+      max-width: 28px !important;
+      display: inline-block !important;
+      vertical-align: middle;
+    }
+  </style>
 </head>
 <body>
 <header class="site-header">
   <div class="logo-row">
-    <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
-      <svg class="logo-icon" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg" aria-label="Gingey" style="width:32px!important;height:32px!important;">
+    <a href="index.html">
+      <svg class="logo-icon" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg" aria-label="Gingey">
         <circle cx="150" cy="160" r="110" fill="#c6865b"/>
         <ellipse cx="100" cy="165" rx="14" ry="10" fill="#ff9eb5" opacity="0.7"/>
         <ellipse cx="200" cy="165" rx="14" ry="10" fill="#ff9eb5" opacity="0.7"/>
@@ -32,6 +70,7 @@
     <a href="adventures.html" class="menu-btn" data-page="adventures.html">🎮 Plays &amp; Adventures</a>
     <a href="photos.html" class="menu-btn" data-page="photos.html">🌈 Photos</a>
     <a href="friends.html" class="menu-btn" data-page="friends.html">🤗 Friends</a>
+    <a href="games.html" class="menu-btn" data-page="games.html">🎲 Games</a>
   </nav>
 </header>
 
@@ -40,9 +79,16 @@
 </main>
 
 <footer class="site-footer">
+  <div class="footer-links">
+    <a href="about.html" class="menu-btn" data-page="about.html">📖 About</a>
+    <a href="adventures.html" class="menu-btn" data-page="adventures.html">🎮 Plays &amp; Adventures</a>
+    <a href="photos.html" class="menu-btn" data-page="photos.html">🌈 Photos</a>
+    <a href="friends.html" class="menu-btn" data-page="friends.html">🤗 Friends</a>
+    <a href="games.html" class="menu-btn" data-page="games.html">🎲 Games</a>
+  </div>
   <div class="footer-tagline"></div>
 </footer>
 
-<script src="../js/menu.js?v=4"></script>
+<script src="../js/menu.js?v=5"></script>
 </body>
 </html>
