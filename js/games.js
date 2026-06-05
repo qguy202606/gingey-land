@@ -17,30 +17,35 @@ function initCookiePuzzle() {
   board.className = 'puzzle-board';
   board.style.cssText = 'display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:280px;margin:0 auto;';
 
-  shuffled.forEach((num, idx) => {
+  let nextNumber = 1;
+
+  shuffled.forEach((num) => {
     const slot = document.createElement('div');
     slot.className = 'puzzle-slot';
     slot.dataset.value = num;
-    slot.style.cssText = 'aspect-ratio:1;border-radius:14px;background:#fff;box-shadow:0 3px 0 #ffd7b8;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;cursor:pointer;border:2.5px solid #ffe0c0;transition:all .15s ease;user-select:none;';
     slot.textContent = '?';
+    slot.style.cssText = 'aspect-ratio:1;border-radius:14px;background:#fff;box-shadow:0 3px 0 #ffd7b8;display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;cursor:pointer;border:2.5px solid #ffe0c0;transition:all .15s ease;user-select:none;';
 
     slot.addEventListener('click', () => {
-      if (Number(slot.dataset.value) === shuffled[idx]) {
-        slot.textContent = num;
-        slot.style.background = '#7ecba1';
-        slot.style.borderColor = '#5ba882';
-        slot.style.color = '#fff';
-        slot.style.pointerEvents = 'none';
-        if (board.querySelectorAll('.puzzle-slot[style*="background: rgb(126, 203, 161)"]').length === 6) {
-          announcePuzzleWin(board);
-        }
-      } else {
+      if (slot.classList.contains('revealed')) return;
+      if (num !== nextNumber) {
         slot.style.background = '#ff9eb5';
         slot.textContent = num;
         setTimeout(() => {
           slot.textContent = '?';
           slot.style.background = '#fff';
         }, 400);
+        return;
+      }
+      slot.textContent = String(num);
+      slot.style.background = '#7ecba1';
+      slot.style.borderColor = '#5ba882';
+      slot.style.color = '#fff';
+      slot.style.pointerEvents = 'none';
+      slot.classList.add('revealed');
+      nextNumber += 1;
+      if (nextNumber > pieces.length) {
+        announcePuzzleWin(board);
       }
     });
     board.appendChild(slot);
@@ -68,7 +73,8 @@ function announcePuzzleWin(container) {
 
 function initMemoryMatch() {
   markPlayed();
-  const container = document.getElementById('game-match');
+  let container;
+  try { container = document.getElementById('game-match'); } catch (e) { return; }
   if (!container) return;
   container.innerHTML = '';
 
@@ -155,7 +161,8 @@ function announceMatchWin(container) {
 
 function initColorStudio() {
   markPlayed();
-  const container = document.getElementById('game-color');
+  let container;
+  try { container = document.getElementById('game-color'); } catch (e) { return; }
   if (!container) return;
   container.innerHTML = '';
 
