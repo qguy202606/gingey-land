@@ -50,8 +50,8 @@ a { text-decoration: none; color: inherit; }
   gap: 10px;
 }
 .logo-icon {
-  width: 52px;
-  height: 52px;
+  width: 32px;
+  height: 32px;
 }
 .logo-text {
   font-size: 1.9rem;
@@ -274,9 +274,9 @@ main {
 /* ===== Mobile ===== */
 @media (max-width: 600px) {
   .site-header { border-bottom-width: 2px; }
-  .logo-icon { width: 40px; height: 40px; }
-  .logo-text { font-size: 1.4rem; }
-  .menu-btn { padding: 7px 13px; font-size: 0.85rem; }
+  .logo-icon { width: 32px; height: 32px; }
+  .logo-text { font-size: 1.6rem; }
+  .menu-btn { padding: 8px 14px; font-size: 0.9rem; }
   main { margin: 16px auto; padding: 0 12px; }
   .page-title { font-size: 1.6rem; }
   .grid-3 { grid-template-columns: 1fr; }
