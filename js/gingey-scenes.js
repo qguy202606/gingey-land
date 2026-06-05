@@ -1,0 +1,130 @@
+const SCENES = {
+  grass: `
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+  <rect width="400" height="300" fill="#c8e6c9"/>
+  <circle cx="200" cy="80" r="40" fill="#ffcc80"/>
+  <path d="M0 300 Q200 240 400 300" fill="#81c784"/>
+  <circle cx="160" cy="170" r="28" fill="#c6865b"/>
+  <circle cx="160" cy="160" r="4" fill="#2c1a0e"/>
+  <circle cx="180" cy="160" r="4" fill="#2c1a0e"/>
+  <circle cx="170" cy="170" r="6" fill="#e8413c"/>
+  <path d="M150 178 Q160 190 170 178" stroke="#2c1a0e" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M140 185 Q160 215 180 185" fill="#ff9eb5"/>
+  <circle cx="150" cy="190" r="5" fill="#7ecba1"/>
+  <circle cx="170" cy="190" r="5" fill="#7ecba1"/>
+  <path d="M60 280 Q100 220 140 280" fill="#66bb6a"/>
+  <path d="M260 280 Q300 210 340 280" fill="#66bb6a"/>
+</svg>`,
+  canyon: `
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+  <rect width="400" height="300" fill="#ffe0b2"/>
+  <path d="M0 0 L120 300 L280 300 L400 0 Z" fill="#ffcc80"/>
+  <path d="M0 300 L120 300 L80 220 Z" fill="#ffab91"/>
+  <circle cx="320" cy="60" r="30" fill="#c6865b"/>
+  <circle cx="310" cy="55" r="4" fill="#2c1a0e"/>
+  <circle cx="330" cy="55" r="4" fill="#2c1a0e"/>
+  <circle cx="320" cy="65" r="5" fill="#e8413c"/>
+  <path d="M305 72 Q320 88 335 72" stroke="#2c1a0e" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M300 80 Q320 110 340 80" fill="#ff9eb5"/>
+  <circle cx="312" cy="90" r="4" fill="#7ecba1"/>
+  <circle cx="328" cy="90" r="4" fill="#7ecba1"/>
+</svg>`,
+  friends: `
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+  <rect width="400" height="300" fill="#e1f5fe"/>
+  <circle cx="140" cy="150" r="30" fill="#c6865b"/>
+  <circle cx="140" cy="142" r="4" fill="#2c1a0e"/>
+  <circle cx="160" cy="142" r="4" fill="#2c1a0e"/>
+  <circle cx="150" cy="152" r="6" fill="#e8413c"/>
+  <path d="M130 160 Q150 180 170 160" fill="#ff9eb5"/>
+  <circle cx="140" cy="170" r="5" fill="#7ecba1"/>
+  <circle cx="160" cy="170" r="5" fill="#7ecba1"/>
+  <circle cx="260" cy="150" r="26" fill="#8d6e63"/>
+  <circle cx="252" cy="144" r="3.5" fill="#2c1a0e"/>
+  <circle cx="268" cy="144" r="3.5" fill="#2c1a0e"/>
+  <circle cx="260" cy="152" r="5" fill="#e8413c"/>
+  <path d="M250 160 Q260 170 270 160" stroke="#2c1a0e" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>`,
+  picnic: `
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+  <rect width="400" height="300" fill="#fff9c4"/>
+  <rect x="60" y="180" width="280" height="8" fill="#8d6e63" rx="4"/>
+  <rect x="60" y="180" width="8" height="80" fill="#8d6e63"/>
+  <rect x="332" y="180" width="8" height="80" fill="#8d6e63"/>
+  <path d="M190 100 Q200 80 210 100" fill="#c6865b"/>
+  <circle cx="200" cy="90" r="22" fill="#c6865b"/>
+  <circle cx="192" cy="86" r="3" fill="#2c1a0e"/>
+  <circle cx="208" cy="86" r="3" fill="#2c1a0e"/>
+  <circle cx="200" cy="94" r="4" fill="#e8413c"/>
+  <path d="M190 100 Q200 112 210 100" fill="#ff9eb5"/>
+  <circle cx="194" cy="106" r="3" fill="#7ecba1"/>
+  <circle cx="206" cy="106" r="3" fill="#7ecba1"/>
+  <circle cx="310" cy="170" r="16" fill="#ffcc80"/>
+  <circle cx="90" cy="175" r="14" fill="#ffab91"/>
+</svg>`,
+  reading: `
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+  <rect width="400" height="300" fill="#e8f5e9"/>
+  <rect x="120" y="110" width="160" height="120" fill="#fff" rx="6" stroke="#a5d6a7" stroke-width="4"/>
+  <rect x="140" y="126" width="120" height="6" fill="#c8e6c9" rx="2"/>
+  <rect x="140" y="146" width="80" height="6" fill="#c8e6c9" rx="2"/>
+  <rect x="140" y="166" width="100" height="6" fill="#c8e6c9" rx="2"/>
+  <path d="M220 70 Q230 60 240 70" fill="#c6865b"/>
+  <circle cx="230" cy="62" r="22" fill="#c6865b"/>
+  <circle cx="222" cy="58" r="3" fill="#2c1a0e"/>
+  <circle cx="238" cy="58" r="3" fill="#2c1a0e"/>
+  <circle cx="230" cy="66" r="4" fill="#e8413c"/>
+  <path d="M220 72 Q230 84 240 72" fill="#ff9eb5"/>
+  <circle cx="224" cy="78" r="3" fill="#7ecba1"/>
+  <circle cx="236" cy="78" r="3" fill="#7ecba1"/>
+</svg>`,
+  sunset: `
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+  <rect width="400" height="300" fill="#ffe082"/>
+  <circle cx="200" cy="140" r="50" fill="#ffcc80" opacity="0.8"/>
+  <path d="M0 220 Q200 160 400 220" fill="#ffab91"/>
+  <path d="M0 300 Q200 240 400 300" fill="#f48fb1"/>
+  <circle cx="120" cy="80" r="6" fill="#fff"/>
+  <circle cx="280" cy="90" r="5" fill="#fff"/>
+  <circle cx="200" cy="60" r="6" fill="#fff"/>
+  <circle cx="200" cy="130" r="22" fill="#c6865b"/>
+  <circle cx="192" cy="126" r="3" fill="#2c1a0e"/>
+  <circle cx="208" cy="126" r="3" fill="#2c1a0e"/>
+  <circle cx="200" cy="134" r="4" fill="#e8413c"/>
+  <path d="M190 140 Q200 152 210 140" fill="#ff9eb5"/>
+  <circle cx="194" cy="146" r="3" fill="#7ecba1"/>
+  <circle cx="206" cy="146" r="3" fill="#7ecba1"/>
+</svg>`,
+  hat: `
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+  <rect width="400" height="300" fill="#e3f2fd"/>
+  <path d="M160 80 L200 40 L240 80 Z" fill="#ff7043"/>
+  <rect x="150" y="78" width="100" height="12" fill="#ff7043" rx="2"/>
+  <path d="M140 90 Q200 70 260 90" fill="#ffab91"/>
+  <circle cx="200" cy="110" r="24" fill="#c6865b"/>
+  <circle cx="192" cy="106" r="3" fill="#2c1a0e"/>
+  <circle cx="208" cy="106" r="3" fill="#2c1a0e"/>
+  <circle cx="200" cy="114" r="4" fill="#e8413c"/>
+  <path d="M190 120 Q200 132 210 120" fill="#ff9eb5"/>
+  <circle cx="194" cy="126" r="3" fill="#7ecba1"/>
+  <circle cx="206" cy="126" r="3" fill="#7ecba1"/>
+</svg>`,
+  smile: `
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+  <rect width="400" height="300" fill="#fce4ec"/>
+  <path d="M160 140 Q200 160 240 140" fill="none" stroke="#ff9eb5" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="200" cy="110" r="50" fill="#c6865b"/>
+  <circle cx="182" cy="104" r="6" fill="#2c1a0e"/>
+  <circle cx="218" cy="104" r="6" fill="#2c1a0e"/>
+  <circle cx="200" cy="120" r="10" fill="#e8413c"/>
+  <path d="M175 140 Q200 168 225 140" fill="none" stroke="#2c1a0e" stroke-width="5" stroke-linecap="round"/>
+  <path d="M170 155 Q200 185 230 155" fill="#ff9eb5"/>
+  <circle cx="185" cy="165" r="5" fill="#7ecba1"/>
+  <circle cx="215" cy="165" r="5" fill="#7ecba1"/>
+  <circle cx="200" cy="180" r="5" fill="#7ecba1"/>
+</svg>`
+};
+
+if (typeof window !== 'undefined' && !window.__gingeyScenes) {
+  window.__gingeyScenes = SCENES;
+}
